@@ -16,15 +16,15 @@ class MainViewModel constructor(private val repository: MainRepository) : ViewMo
 
     fun getAllVideos() {
         val request = repository.getAllVideos()
-            request.enqueue(object : Callback<List<Video>>{
-                override fun onResponse(call: Call<List<Video>>, response: Response<List<Video>>) {
-                    videoList.postValue(response.body())
-                }
+        request.enqueue(object : Callback<List<Video>>{
+            override fun onResponse(call: Call<List<Video>>, response: Response<List<Video>>) {
+                videoList.postValue(response.body())
+            }
 
-                override fun onFailure(call: Call<List<Video>>, t: Throwable) {
-                    errorMessage.postValue(t.message)
-                }
+            override fun onFailure(call: Call<List<Video>>, t: Throwable) {
+                errorMessage.postValue(t.message)
+            }
 
-            })
+        })
     }
 }
