@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 Nesse projeto foi desenvolvido um aplicativo Android utilizando Kotlin, com a arquitetura MVVM, RecyclerView e Retrofit. 
-O aplicativo consome uma [API](https://6422ff9a001cb9fc20358388.mockapi.io/Videos) falsa criada no site [mockAPI](https://mockapi.io/), que contém alguns videos do youtube.
+O aplicativo consome uma [API](https://6422ff9a001cb9fc20358388.mockapi.io/Videos) falsa criada no site [mockAPI](https://mockapi.io/), que contém alguns Videos do youtube.
 
 # Diagrama de arquitetura
 
