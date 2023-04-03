@@ -11,7 +11,7 @@ import com.example.app_mvvm.R
 import com.example.app_mvvm.databinding.ResItemVideoBinding
 import com.example.app_mvvm.models.Video
 
-class VideoAdapter(private val onItemClicked: (Video) -> Unit) : Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter(private val onItemClicked: (Video) -> Unit) : Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var binding: ResItemVideoBinding
     private var items : List<Video> = ArrayList()
