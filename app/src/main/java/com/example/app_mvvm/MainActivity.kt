@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app_mvvm.rest.RetrofitService
 import com.example.app_mvvm.adapters.MainAdapter
 import com.example.app_mvvm.databinding.ActivityMainBinding
 import com.example.app_mvvm.repositories.MainRepository
+
 import com.example.app_mvvm.viewmodel.main.MainViewModel
 import com.example.app_mvvm.viewmodel.main.MainViewModelFactory
 
@@ -24,32 +24,31 @@ class MainActivity : AppCompatActivity() {
 
     private val retrofitService = RetrofitService.getInstance()
 
-    private val adapter = MainAdapter { video ->
-        openLink(video.link)
+    private val adapter = MainAdapter {
+        openLink(it.link)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.recyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
-
+        initRecyclerView()
         viewModel = ViewModelProvider(this, MainViewModelFactory(MainRepository(retrofitService)))[MainViewModel::class.java]
-
-        binding.recyclerview.adapter = adapter
     }
-
+    private fun initRecyclerView() {
+        binding.recyclerview.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerview.adapter = this.adapter
+    }
     override fun onStart() {
         super.onStart()
 
-        viewModel.videoList.observe(this, Observer { videos ->
+        viewModel.videoList.observe(this) { videos ->
             Log.i("TAG", "OnStart")
-            adapter.setDataSet(videos)
-        })
+            adapter.setVideoList(videos)
+        }
 
-        viewModel.errorMessage.observe(this, Observer { message ->
+        viewModel.errorMessage.observe(this){ message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        })
+        }
     }
 
     override fun onResume() {

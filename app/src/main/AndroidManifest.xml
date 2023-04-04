@@ -12,6 +12,7 @@
         android:label="My Playlist"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_MVVM"
+        android:name="android.support.multidex.MultiDexApplication"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"

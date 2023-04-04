@@ -1,5 +1,6 @@
 package com.example.app_mvvm.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,8 +35,9 @@ class MainAdapter(private val onItemClicked: (Video) -> Unit) : Adapter<Recycler
 
     }
 
-    fun setDataSet(Videos: List<Video>){
-        this.items = Videos
+    fun setVideoList(items : List<Video>) {
+        this.items = items.toMutableList()
+        notifyDataSetChanged()
     }
 
     class VideoViewHolder constructor(
