@@ -21,7 +21,7 @@ O aplicativo consome uma [API](https://6422ff9a001cb9fc20358388.mockapi.io/Video
  
 Pré-requisitos: Disposito Android
 
-[Download App My Playlist ](https://google.com/404)
+[Download App My Playlist ](https://www.mediafire.com/file/klt5gta38eh9zta/my-playlist.apk/file)
 
 # Autor
 
